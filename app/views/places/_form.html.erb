@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="field">
-    <%= form.text_field :place_type %>
+    <%= form.text_field :place_type, required: true %>
   </div>
 
   <div class="field">
-    <%= form.text_field :address, label: "Location" %>
+    <%= form.text_field :address, label: "Location", required: true %>
   </div>
 
   <div class="field">
-    <%= form.text_field :latitude %>
+    <%= form.text_field :latitude, required: true %>
   </div>
 
   <div class="field">
-    <%= form.text_field :longitude %>
+    <%= form.text_field :longitude, required: true %>
   </div>
 
   <div class="field">

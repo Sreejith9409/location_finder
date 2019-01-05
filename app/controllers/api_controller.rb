@@ -24,6 +24,11 @@ class ApiController < ApplicationController
   end
 
 	def get_nearby_places
+		if params[:location].present? && (params[:latitude].blank? && params[:longitude].blank?)
+			params[:latitude], params[:longitude] = Place.where(address: params[:location]).pluck(:latitude, :longitude).first 
+			raise ApiException.new(500, 'No data found for this location') if params[:latitude].blank? && params[:longitude].blank?
+
+		end
 		validate_request
 		respond_to do |format|
 			# By default units is considered as kms. However user can pass either miles or kms
@@ -38,7 +43,7 @@ class ApiController < ApplicationController
 
 	def validate_request
 		raise ApiException.new(400, 'Not a Valid Request') unless request.get?
-		raise ApiException.new(500, 'Please send Longitude and Latitude') if params[:latitude].blank? || params[:longitude].blank?
+		raise ApiException.new(500, 'Please send either Longitude and Latitude or Location') if (params[:latitude].blank? || params[:longitude].blank?)
 
 	end
 end
