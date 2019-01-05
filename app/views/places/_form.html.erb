@@ -1,0 +1,49 @@
+<%= bootstrap_form_for(place) do |form| %>
+  <% if place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :place_type %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :address, label: "Location" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.select :country_id, @countries, { label: "Choose your Country" }, { class: "selectpicker" } %>
+  </div>
+
+  <div class="field">
+    <%= form.select :state_id, @states, { label: "Choose your State" }, { class: "selectpicker" } %>
+  </div>
+
+  <div class="field">
+    <%= form.select :city_id, @cities, { label: "Choose your City" }, { class: "selectpicker" } %>
+  </div>
+ 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
