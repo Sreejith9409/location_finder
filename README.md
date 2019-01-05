@@ -12,7 +12,7 @@ The setups steps expect following tools installed on the system.
 ##### 1. Check out the repository
 
 ```bash
-https://github.com/Sreejith9409/grid_square.git
+https://github.com/Sreejith9409/location_finder.git
 ```
 
 ##### 2. Create database.yml file
